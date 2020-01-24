@@ -4,13 +4,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
-
 const methodOverride = require("method-override");
 
 app.set("view engine", "ejs");
-
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(
   cookieSession({
     name: "session",
@@ -176,7 +173,7 @@ app.get("/urls/new", (req, res) => {
   };
 
   if (!req.session.user_id) {
-    res.redirect("/login");
+    res.redirect("login", templateVars);
   } else {
     res.render("urls_new", templateVars);
   }
