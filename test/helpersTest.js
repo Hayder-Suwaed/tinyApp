@@ -1,27 +1,33 @@
 const { assert } = require("chai");
-const { getUserByEmail } = require("../helpers.js");
-const testUsers = {
-  userRandomID: {
-    id: "userRandomID",
-    email: "user@example.com",
+const { emailLookup } = require("../helper");
+
+const users = {
+  "userRandomID": {
+    id: "userRandomID", 
+    email: "user@example.com", 
     password: "purple-monkey-dinosaur"
   },
-  user2RandomID: {
-    id: "user2RandomID",
-    email: "user2@example.com",
+  "user2RandomID": {
+    id: "user2RandomID", 
+    email: "user2@example.com", 
     password: "dishwasher-funk"
   }
 };
 
-describe("getUserByEmail", function() {
-  it("should return a user with valid email", function() {
-    const user = getUserByEmail("user@example.com", testUsers);
+
+describe("emailLookup", () => {
+  it("should return the user's id with valid email", () => {
+    const userID = emailLookup(users, "user@example.com");
     const expectedOutput = "userRandomID";
-    assert.equal(user.id, expectedOutput);
+    
+    assert.equal(userID, expectedOutput);
   });
-  it("should return Undefined", function() {
-    const user = getUserByEmail(" ");
+
+  it("should return undefined with email not included in user's database", () => {
+    const userID = emailLookup(users, "some@email.com");
     const expectedOutput = undefined;
-    assert.equal(user, expectedOutput);
+
+    assert.equal(userID, expectedOutput);
   });
 });
+
