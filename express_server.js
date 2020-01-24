@@ -84,7 +84,7 @@ const checkVisitorCookie = function(id, visitorDatabase) {
   return false;
 };
 
-/* ------------------------------- hello & home page ------------------------------ */
+// Home page ------------------------------ */
 
 app.get("/", (req, res) => {
   if (!req.session.user_id) {
@@ -94,19 +94,11 @@ app.get("/", (req, res) => {
   }
 });
 
-app.get("/hello", (req, res) => {
-  let templateVars = {
-    user: users[req.session.user_id]
-  };
-
-  res.render("hello_world", templateVars);
-});
-
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
 });
 
-/* ------------------------------- login & logout ------------------------------ */
+//Login & Logout ------------------------------ */
 
 app.get("/login", (req, res) => {
   let templateVars = {
@@ -138,7 +130,7 @@ app.post("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-/* ------------------------------- urls index page ------------------------------ */
+//URLS index page ------------------------------ */
 
 app.get("/urls", (req, res) => {
   if (!req.session.user_id) {
@@ -176,7 +168,7 @@ app.post("/urls", (req, res) => {
   res.redirect(`/urls/${sURL}`);
 });
 
-/* ------------------------------- urls & extensions ------------------------------ */
+//URLS & Extensions ------------------------------ */
 
 app.get("/urls/new", (req, res) => {
   let templateVars = {
@@ -252,6 +244,7 @@ app.get("/u/:shortURL", (req, res) => {
     urlVisitors[visitor.id] = visitor;
   } else {
     if (!checkVisitorCookie(req.session.user_id, urlVisitors)) {
+
       //checks the urlVisitors history to makesure user only counts towards unique visitor once
 
       urlDatabase[req.params.shortURL].uniqueVisit++;
@@ -281,7 +274,7 @@ app.delete("/urls/:shortURL", (req, res) => {
   res.redirect("/urls");
 });
 
-/* ------------------------------- register ------------------------------ */
+//Register ------------------------------ */
 
 app.get("/register", (req, res) => {
   let templateVars = {
