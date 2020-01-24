@@ -69,7 +69,7 @@ const generateViewers = function(id) {
 
 // function to ckeck if a user has already been counted toward the unique visitors count
 
-const checkVisitorCookie  = function(id, visitorDatabase) {
+const checkVisitorCookie = function(id, visitorDatabase) {
   let ids = Object.values(visitorDatabase);
 
   for (let user of ids) {
@@ -84,10 +84,10 @@ const checkVisitorCookie  = function(id, visitorDatabase) {
 // Home page >>>>>>>>>>>>>//
 
 app.get("/", (req, res) => {
-  if (!req.session.user_id) {
-    res.redirect("/login");
-  } else {
+  if (req.session.user_id ||  users[req.session.user_id]) {
     res.redirect("/urls");
+  } else {
+    res.redirect("/login");
   }
 });
 
@@ -169,15 +169,15 @@ app.post("/urls", (req, res) => {
 
 app.get("/urls/new", (req, res) => {
   let templateVars = {
-    user: users[req.session.user_id]
+    user: users[req.session.user_id],
   };
-
-  if (!req.session.user_id) {
-    res.redirect("/login");
+  if (templateVars.user) {
+    res.render('urls_new', templateVars);
   } else {
-    res.render("urls_new", templateVars);
+    res.redirect('/login');
   }
 });
+
 
 app.get("/urls/:shortURL", (req, res) => {
   let sURL = req.params.shortURL;
