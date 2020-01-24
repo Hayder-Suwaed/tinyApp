@@ -216,7 +216,7 @@ app.post("/urls/:shortURL", (req, res) => {
   let sURL = req.params.shortURL;
 
   if (!req.session.user_id) {
-    res.send("Cannot edit url!");
+    res.send("Cannot Edit URL!");
   } else {
     userDatabase[sURL].longURL = req.body.longURL;
   }
