@@ -69,7 +69,7 @@ const generateViewers = function(id) {
 
 // function to ckeck if a user has already been counted toward the unique visitors count
 
-const checkVisitorCookie = function(id, visitorDatabase) {
+const checkVisitorCookie  = function(id, visitorDatabase) {
   let ids = Object.values(visitorDatabase);
 
   for (let user of ids) {
