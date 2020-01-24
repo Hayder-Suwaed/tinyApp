@@ -173,7 +173,7 @@ app.get("/urls/new", (req, res) => {
   };
 
   if (!req.session.user_id) {
-    res.redirect("login", templateVars);
+    res.render("login", templateVars);
   } else {
     res.render("urls_new", templateVars);
   }
