@@ -16,7 +16,6 @@ app.use(
   })
 );
 
-app.use(methodOverride("_method"));
 
 // Global helper and constants functions //
 
