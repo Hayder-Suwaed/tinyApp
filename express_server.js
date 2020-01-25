@@ -155,6 +155,7 @@ app.post("/urls", (req, res) => {
 
     userID: req.session.user_id,
 
+    
     time: new Date().toDateString(),
 
     totalVisit: 0,
