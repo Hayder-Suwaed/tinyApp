@@ -1,5 +1,5 @@
 const { assert } = require("chai");
-const { emailLookup } = require("../helper");
+const { emailLookup } = require("../helpers");
 
 const users = {
   userRandomID: {
