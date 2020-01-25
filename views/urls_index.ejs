@@ -33,7 +33,7 @@
             <td><%= url %></td>
             <td><%= urls[url].longURL %></td>
             <td><%= urls[url].time %></td>
-           <td><form method="GET" action="/urls/<%= url %>">
+           <td><form method="GET" action="/urls/<%= url %>"> 
               <button type="submit" class="btn btn-outline-warning">Edit</button>
             </form></td>  
             <td><form method="POST" action="/urls/<%=url%>?_method=DELETE" %>>
