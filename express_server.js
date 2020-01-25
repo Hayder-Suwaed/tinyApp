@@ -62,7 +62,7 @@ const urlVisitors = {};
 const generateViewers = function(id) {
   let userInfo = {
     id: id,
-    time: new Date().toDateString() 
+    time: new Date().toDateString()  
   };
   return userInfo;
 };
