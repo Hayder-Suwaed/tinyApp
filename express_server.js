@@ -60,13 +60,11 @@ const urlVisitors = {};
 
 // function to generate short url visitors and the time of their visit
 const generateViewers = function(id) {
-
   let userInfo = {
     id: id,
-    time: new Date().toDateString()
+    time: new Date().toDateString() 
   };
   return userInfo;
-  
 };
 
 // function to ckeck if a user has already been counted toward the unique visitors count
