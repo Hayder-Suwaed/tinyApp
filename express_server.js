@@ -62,9 +62,9 @@ const urlVisitors = {};
 const generateViewers = function(id) {
   let userInfo = {
     id: id,
-    time: new Date().toDateString()  
+    time: new Date().toDateString()
   };
-  return userInfo;
+  return userInfo; 
 };
 
 // function to ckeck if a user has already been counted toward the unique visitors count
