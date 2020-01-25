@@ -17,7 +17,7 @@ const users = {
 describe("emailLookup", () => {
   it("should return the user's id with valid email", () => {
     const userID = emailLookup(users, "user@example.com");
-    const expectedOutput = "userRandomID";
+    // const expectedOutput = "userRandomID";
 
     assert.equal(userID, expectedOutput);
   });
