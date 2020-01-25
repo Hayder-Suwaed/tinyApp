@@ -60,6 +60,7 @@ const urlVisitors = {};
 
 // function to generate short url visitors and the time of their visit
 const generateViewers = function(id) {
+  
   let userInfo = {
     id: id,
     time: new Date().toDateString()
@@ -84,7 +85,7 @@ const checkVisitorCookie = function(id, visitorDatabase) {
 // Home page >>>>>>>>>>>>>//
 
 app.get("/", (req, res) => {
-  if (req.session.user_id ||  users[req.session.user_id]) {
+  if (req.session.user_id || users[req.session.user_id]) {
     res.redirect("/urls");
   } else {
     res.redirect("/login");
@@ -155,7 +156,6 @@ app.post("/urls", (req, res) => {
 
     userID: req.session.user_id,
 
-    
     time: new Date().toDateString(),
 
     totalVisit: 0,
@@ -170,15 +170,14 @@ app.post("/urls", (req, res) => {
 
 app.get("/urls/new", (req, res) => {
   let templateVars = {
-    user: users[req.session.user_id],
+    user: users[req.session.user_id]
   };
   if (templateVars.user) {
-    res.render('urls_new', templateVars);
+    res.render("urls_new", templateVars);
   } else {
-    res.redirect('/login');
+    res.redirect("/login");
   }
 });
-
 
 app.get("/urls/:shortURL", (req, res) => {
   let sURL = req.params.shortURL;
